@@ -10,5 +10,5 @@ driver = chrome()
 # driver = firefox()
 
 # Navigate to the site
-driver.get('https://www.google.com')
+driver.get('https://thinking-tester-contact-list.herokuapp.com/')
 print(driver.title)
