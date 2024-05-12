@@ -6,9 +6,14 @@ Feature: Sign Up
         When the user tries to sign up with first name, last name, email and password
         Then the sign up should be successful
 
-        
 
-    Scenario: Unsuccessful sign up
-        Given a user exists with email
-        When the user tries to sign up with email
-        Then the sign up should be unsuccessful
+    Scenario Outline: Unsuccessful sign up
+        Given a user tries to sign up again with <credential>
+        When the user enters <credential>
+        Then a warning appears that <message>
+
+        Examples:
+            | credential                   | message                     |
+            | the same email               | the email is already in use |
+            | a password that is too short | the password is too short   |
+    

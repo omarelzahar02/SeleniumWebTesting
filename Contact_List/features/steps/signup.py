@@ -40,21 +40,28 @@ def step_impl(context):
     assert driver.title == "My Contacts", "Sign up failed"
 
 
-@given(u'a user exists with email')
-def step_impl(context):
-    driver.back()  
-    WebDriverWait(driver, DELAY_TIME).until(EC.presence_of_element_located((By.ID, "firstName"))).send_keys(firstName)
-    WebDriverWait(driver, DELAY_TIME).until(EC.presence_of_element_located((By.ID, "lastName"))).send_keys(lastName)
-    WebDriverWait(driver, DELAY_TIME).until(EC.presence_of_element_located((By.ID, "email"))).send_keys(email)
-    WebDriverWait(driver, DELAY_TIME).until(EC.presence_of_element_located((By.ID, "password"))).send_keys(password)
+@given(u'a user tries to sign up again with {credential}')
+def step_impl(context, credential):
+    print(credential)
+    if credential == "the same email":
+        driver.back()
     
-    WebDriverWait(driver, DELAY_TIME).until(EC.presence_of_element_located((By.ID, "submit"))).click()
+@when(u'the user enters {credential}')
+def step_impl(context, credential):
+    if credential == "the same email":
+        WebDriverWait(driver, DELAY_TIME).until(EC.presence_of_element_located((By.ID, "submit"))).click()
+    elif credential == "a password that is too short":
+        global password
+        password = 12345
+        WebDriverWait(driver, DELAY_TIME).until(EC.presence_of_element_located((By.ID, "password"))).clear()
+        WebDriverWait(driver, DELAY_TIME).until(EC.presence_of_element_located((By.ID, "password"))).send_keys(password)
+        WebDriverWait(driver, DELAY_TIME).until(EC.presence_of_element_located((By.ID, "submit"))).click()
+    
     thread.sleep(DELAY_TIME)
 
-@when(u'the user tries to sign up with email')
-def step_impl(context):
-    raise NotImplementedError(u'STEP: When the user tries to sign up with email')
-
-@then(u'the sign up should be unsuccessful')
-def step_impl(context):
-    raise NotImplementedError(u'STEP: Then the sign up should be unsuccessful')
+@then(u'a warning appears that {message}')
+def step_impl(context, message):
+    if message == "the email is already in use":
+        assert WebDriverWait(driver, DELAY_TIME).until(EC.presence_of_element_located((By.ID, "error"))).text == "Email address is already in use", "Email already exists warning not found"
+    elif message == "the password is too short":
+        assert WebDriverWait(driver, DELAY_TIME).until(EC.presence_of_element_located((By.ID, "error"))).text == f"User validation failed: password: Path `password` (`{password}`) is shorter than the minimum allowed length (7).", "Password too short warning not found"
