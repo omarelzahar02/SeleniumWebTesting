@@ -1,6 +1,12 @@
-Feature: Showing off behave
+# Feature: Login
 
-    Scenario: Run a simple test
-        Given we have behave installed
-        When we implement a test
-        Then behave will test it for us!
+#     Scenario: Successful login
+#         Given a user exists with username and password
+#         When the user tries to login with username and password
+#         Then the login should be successful
+        
+
+#     Scenario: Unsuccessful login
+#         Given a user exists with username and password
+#         When the user tries to login with username and password
+#         Then the login should be unsuccessful
