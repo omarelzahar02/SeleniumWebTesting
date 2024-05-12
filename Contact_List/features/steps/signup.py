@@ -18,10 +18,14 @@ def step_impl(context):
     email = "Omar" + str(int(time.time())) + "@gmail.com"
     password = "123456789"
 
+@given(u'the user is on the sign up page')
+def step_impl(context):
+    driver.get('https://thinking-tester-contact-list.herokuapp.com')
+    WebDriverWait(driver, DELAY_TIME).until(EC.presence_of_element_located((By.ID, "signup"))).click()
+
 
 @when(u'the user tries to sign up with first name, last name, email and password')
 def step_impl(context):
-    driver.get('https://thinking-tester-contact-list.herokuapp.com/addUser')
     WebDriverWait(driver, DELAY_TIME).until(EC.presence_of_element_located((By.ID, "firstName"))).send_keys(firstName)
     WebDriverWait(driver, DELAY_TIME).until(EC.presence_of_element_located((By.ID, "lastName"))).send_keys(lastName)
     WebDriverWait(driver, DELAY_TIME).until(EC.presence_of_element_located((By.ID, "email"))).send_keys(email)
@@ -36,10 +40,20 @@ def step_impl(context):
     assert driver.title == "My Contacts", "Sign up failed"
 
 
-@given(u'a user exists with username')
+@given(u'a user exists with email')
 def step_impl(context):
-    raise NotImplementedError(u'STEP: Given a user exists with username')
+    driver.back()  
+    WebDriverWait(driver, DELAY_TIME).until(EC.presence_of_element_located((By.ID, "firstName"))).send_keys(firstName)
+    WebDriverWait(driver, DELAY_TIME).until(EC.presence_of_element_located((By.ID, "lastName"))).send_keys(lastName)
+    WebDriverWait(driver, DELAY_TIME).until(EC.presence_of_element_located((By.ID, "email"))).send_keys(email)
+    WebDriverWait(driver, DELAY_TIME).until(EC.presence_of_element_located((By.ID, "password"))).send_keys(password)
+    
+    WebDriverWait(driver, DELAY_TIME).until(EC.presence_of_element_located((By.ID, "submit"))).click()
+    thread.sleep(DELAY_TIME)
 
+@when(u'the user tries to sign up with email')
+def step_impl(context):
+    raise NotImplementedError(u'STEP: When the user tries to sign up with email')
 
 @then(u'the sign up should be unsuccessful')
 def step_impl(context):

@@ -8,7 +8,7 @@ Feature: Sign Up
 
         
 
-    # Scenario: Unsuccessful sign up
-    #     Given a user exists with username 
-    #     When the user tries to sign up with username and password
-    #     Then the sign up should be unsuccessful
+    Scenario: Unsuccessful sign up
+        Given a user exists with email
+        When the user tries to sign up with email
+        Then the sign up should be unsuccessful
