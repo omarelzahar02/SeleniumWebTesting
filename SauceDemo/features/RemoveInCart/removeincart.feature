@@ -1,25 +1,23 @@
 Feature: Remove Items from Cart
 
-    Scenario Outline: Successfully remove an item from the cart
-        Given "<user_type>" has logged in and added multiple items to the cart
-        When the user decides to remove an item from the cart
-        Then the item should be successfully removed
-        And the cart should reflect the updated item count
-
-    Scenario Outline: Attempt to remove an item not in the cart
-        Given "<user_type>" has logged in with an empty cart
-        When the user attempts to remove an item that is not in the cart
-        Then the system should display an error message indicating the item is not in the cart
-
-    Scenario Outline: Remove all items from the cart
-        Given "<user_type>" has logged in and filled the cart with items
-        When the user removes all items from the cart one by one
-        Then the cart should be empty
-        And the user should see a message indicating the cart is empty
+    Scenario Outline: Check whether user can remove cart items from cart
+        Given User should login to swag labs using correct "<Username>" and "<Password>"
+        And User clicks the add to cart buttons
+        And User clicks the cart icon
+        When User clicks the remove buttons
+        Then User should see the cart without the removed item
 
         Examples:
-            | user_type               |
-            | standard_user           |
-            | problem_user            |
-            | performance_glitch_user |
-            | error_user              |
+            | Username      | Password     |
+            | standard_user | secret_sauce |
+            | problem_user  | secret_sauce |
+            | error_user    | secret_sauce |
+            | visual_user   | secret_sauce |
+
+    Scenario: Item button should reset after item removal
+        Given User is logged in with "standard_user" and "secret_sauce"
+        And User adds an item to the cart
+        And User navigates to the cart
+        When User removes the item from the cart
+        And User returns to the item listing page
+        Then The item button should show "Add to cart"
