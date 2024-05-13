@@ -54,6 +54,7 @@ def step_impl(context):
 @when(u'the user clicks the submit button')
 def step_impl(context):
     WebDriverWait(driver, DELAY_TIME).until(EC.presence_of_element_located((By.ID, "submit"))).click()
+    thread.sleep(DELAY_TIME)
 
 @then(u'the new contact should be added to the contact list')
 def step_impl(context):
@@ -78,6 +79,14 @@ def step_impl(context):
 
     assert name_found, f"Name '{name}' not found in the table."
     assert email_found, f"Email '{final_email}' not found in the table."
+
+@then(u'the user should see an birth date error message')
+def step_impl(context):
+    assert WebDriverWait(driver, DELAY_TIME).until(EC.presence_of_element_located((By.ID, "error"))).text == "Contact validation failed: birthdate: Birthdate is invalid", "Birth Date Error message not found"
+
+@then(u'the user should see an email validation error message')
+def step_impl(context):
+    assert WebDriverWait(driver, DELAY_TIME).until(EC.presence_of_element_located((By.ID, "error"))).text == "Contact validation failed: email: Email is invalid", "Email Error message not found"
 
 
 # @then(u'the contact with first name Hussein and last name Mosatafa should appear in the contact list')
