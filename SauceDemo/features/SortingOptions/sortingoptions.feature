@@ -1,5 +1,8 @@
 Feature: Sorting items in the main page
 
+    As a user,
+    I want to be able to sort items on the main page based on different criteria,
+    So that I can find items more easily.
     Scenario Outline: Check whether user can remove cart items from cart
         Given User should login to swag labs using correct <Username> and <Password>
         When User clicks sort doropdown

@@ -1,5 +1,9 @@
 Feature: Go to item page
 
+    As a user,
+    I want to be able to navigate to the item page and verify that the information displayed is correct,
+    So that I can make informed decisions about purchasing.
+
     Scenario Outline: check whether user can go to item page and the info is correct
         Given User should login to swag labs using correct <username> and <password>
         When user clicks on the <item> link

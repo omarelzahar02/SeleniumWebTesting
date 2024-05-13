@@ -1,5 +1,9 @@
 Feature: Remove items from cart
 
+    As a user,
+    I want to be able to remove items from my cart,
+    So that I can manage my shopping list effectively.
+
     Scenario Outline: Check whether user can remove cart items from cart the homepage
         Given User should login to swag labs using correct <username> and <password>
         And User adds <item> to cart
