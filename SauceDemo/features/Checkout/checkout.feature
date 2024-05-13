@@ -1,29 +1,56 @@
-Feature: Checkout Process
+Feature: Complete Checkout Process
 
-    Scenario Outline: Complete checkout successfully for different users
-        Given "<user_type>" has logged in and added items to the cart
-        When the user navigates to the cart and proceeds to checkout
-        And the user enters valid billing and shipping information
-        And the user confirms the order
-        Then the checkout should be successful and a confirmation message is displayed
-
-    Scenario Outline: Checkout fails due to invalid payment information
-        Given "<user_type>" has logged in and added items to the cart
-        When the user navigates to the cart and proceeds to checkout
-        And the user enters invalid payment information
-        And the user attempts to confirm the order
-        Then the checkout should fail and an error message regarding invalid payment details is displayed
-
-    Scenario Outline: Checkout interrupted and resumed for different users
-        Given "<user_type>" has logged in and added items to the cart
-        When the user begins the checkout process but navigates away to continue shopping
-        And then returns to the checkout page
-        Then the user should find their checkout state preserved
-        And can complete the checkout process
+    Scenario Outline: Check whether user can complete checkout from cart
+        Given User should login to swag labs using correct "<Username>" and "<Password>"
+        And User clicks the add to cart buttons
+        And User clicks the cart icon
+        When User clicks the checkout button
+        And User enters checkout information with "<FirstName>", "<LastName>", "<ZipCode>"
+        And User clicks the continue button
+        Then User should see the checkout overview page
+        When User clicks the finish button
+        Then User should see the order confirmation with "Thank you for your order!"
 
         Examples:
-            | user_type               |
-            | standard_user           |
-            | problem_user            |
-            | performance_glitch_user |
-            | error_user              |
+            | Username      | Password     | FirstName | LastName | ZipCode |
+            | standard_user | secret_sauce | John      | Doe      | 90210   |
+            | visual_user   | secret_sauce | Alice     | Johnson  | 98765   |
+
+    Scenario Outline: Check problem user cannot checkout from cart
+        Given User should login to swag labs using correct "<Username>" and "<Password>"
+        And User clicks the add to cart buttons
+        And User clicks the cart icon
+        When User clicks the checkout button
+        And User enters checkout information with "<FirstName>", "<LastName>", "<ZipCode>"
+        And User clicks the continue button
+        Then User should see an error message "Error: Last Name is required"
+        Examples:
+            | Username     | Password     | FirstName | LastName | ZipCode |
+            | problem_user | secret_sauce | Jane      | Smith    | 10001   |
+
+    Scenario Outline: Check error user cannot checkout from cart
+        Given User should login to swag labs using correct "<Username>" and "<Password>"
+        And User clicks the add to cart buttons
+        Then User should see the cart icon with wrong number of items clicked
+        And User clicks the cart icon
+        When User clicks the checkout button
+        And User enters checkout information with "<FirstName>", "<LastName>", "<ZipCode>"
+        Then Last Name will be empty
+        And User clicks the continue button
+        Then User should see the checkout overview page
+        When User clicks the finish button
+        Then User will stay on the checkout overview page
+        Examples:
+            | Username   | Password     | FirstName | LastName | ZipCode |
+            | error_user | secret_sauce | Alice     | Johnson  | 98765   |
+
+    Scenario Outline: Check whether standard user entering missing postal code and cannot checkout from cart
+        Given User should login to swag labs using correct "<Username>" and "<Password>"
+        And User clicks the add to cart buttons
+        And User clicks the cart icon
+        When User clicks the checkout button
+        And User enters checkout information with "<FirstName>", "<LastName>", "<ZipCode>"
+        Then User should see an error message "Error: postal code is required"
+        Examples:
+            | Username      | Password     | FirstName | LastName | ZipCode |
+            | standard_user | secret_sauce | John      | Doe      |         |
