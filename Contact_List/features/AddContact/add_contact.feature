@@ -47,3 +47,18 @@ Feature: Add Contact
         Examples:
             | first   | last     | dob        | email           | phone      | addr1 | addr2 | city  | state | postal | country |
             | Hussein | Mosatafa | 1990-01-01 | husseingmail.com     | 1234567890 | 17 St | 83 St | Cairo | Cairo | 10001  | Egypt   |
+
+    Scenario Outline: User cancels adding a new contact
+        Given the user is logged in
+        And the user is on the contacts page
+        When the user clicks the add a new contact button
+        And the user enters the following details to add a new contact
+            | first_name | last_name | DOB   | email   | phone_number | address 1 | address 2 | city   | state   | postal_code | country   |
+            | <first>    | <last>    | <dob> | <email> | <phone>      | <addr1>   | <addr2>   | <city> | <state> | <postal>    | <country> |
+
+        But the user clicks the cancel button
+        Then the new contact should not be added to the contact list
+
+        Examples:
+            | first   | last     | dob        | email               | phone      | addr1 | addr2 | city  | state | postal | country |
+            | Hussein | Mosatafa | 1990-01-01 | hussein@example.com | 1234567890 | 17 St | 83 St | Cairo | Cairo | 10001  | Egypt   |

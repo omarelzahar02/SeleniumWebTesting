@@ -11,6 +11,7 @@ email = "darwish@gmail.com"
 password = "123456789"
 driver = chrome()
 row = None
+table_size = None
 
 @given(u'the user is logged in')
 def step_impl(context):
@@ -22,6 +23,9 @@ def step_impl(context):
 
 @given(u'the user is on the contacts page')
 def step_impl(context):
+    global table_size
+    table_size = len(WebDriverWait(driver, DELAY_TIME).until(EC.presence_of_element_located((By.ID, 'myTable'))).find_elements(By.TAG_NAME, 'tr')) - 1
+    print(table_size)
     assert driver.title == "My Contacts", "Log in failed"
 
 
@@ -87,6 +91,17 @@ def step_impl(context):
 @then(u'the user should see an email validation error message')
 def step_impl(context):
     assert WebDriverWait(driver, DELAY_TIME).until(EC.presence_of_element_located((By.ID, "error"))).text == "Contact validation failed: email: Email is invalid", "Email Error message not found"
+
+@when(u'the user clicks the cancel button')
+def step_impl(context):
+    WebDriverWait(driver, DELAY_TIME).until(EC.presence_of_element_located((By.ID, "cancel"))).click()
+    thread.sleep(DELAY_TIME)
+
+
+@then(u'the new contact should not be added to the contact list')
+def step_impl(context):
+    assert len(WebDriverWait(driver, DELAY_TIME).until(EC.presence_of_element_located((By.ID, 'myTable'))).find_elements(By.TAG_NAME, 'tr')) - 1 == table_size, "Contact added to the table while it should not"
+
 
 
 # @then(u'the contact with first name Hussein and last name Mosatafa should appear in the contact list')
