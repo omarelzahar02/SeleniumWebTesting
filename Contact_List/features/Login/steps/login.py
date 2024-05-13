@@ -1,8 +1,7 @@
-import sys
-sys.path.append('C:\\Users\\Youssef Darwish\\Documents\\GitHub\\SeleniumWebTesting')
+import path_modifier
+path_modifier.modify_sys_path()
 from behave import given, when, then
 from chrome import chrome
-from driver import driver
 from constants import SITE_NAME, DELAY_TIME
 from my_imports import WebDriverWait, EC, By, thread
 from helper_functions import locate_element
