@@ -5,7 +5,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from chrome import chrome
-from driver import driver
 from constants import SITE_NAME, DELAY_TIME
 import time
 driver = chrome() 
