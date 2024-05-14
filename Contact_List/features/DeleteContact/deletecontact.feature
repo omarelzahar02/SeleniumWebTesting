@@ -12,6 +12,11 @@
 # '
 
 Feature: Delete Contact
+    User Story 1: Successful Delete of a Contact
+    As a registered user, 
+    I want to be able to delete a contact 
+    so that I can manage my contact list effectively.
+    definition of done: I successfully delete a contact from the contact list
 
     Scenario Outline: Successfully delete a contact
         Given I am logged in

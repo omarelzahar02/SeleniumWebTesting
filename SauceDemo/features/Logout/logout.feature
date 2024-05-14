@@ -9,6 +9,11 @@
 # 4. After I have logged out, I should be redirected to the login page.
 
 Feature: Logout
+    User Story 1: Successful Logout
+    As a registered user, 
+    I want to be able to log out of my account 
+    so that I can ensure my account is secure when I'm not using it.
+    definition of done: i logout of my account and i am redirected to the login page
 
     Scenario: Successful Logout
         Given I am logged in

@@ -10,6 +10,12 @@
 
 Feature: Reset
 
+    User Story 1: Successful Reset of App
+    As a registered user, 
+    I want to be able to reset my shopping cart 
+    so that I can remove all items from it at once.
+    definition of done: no items selected in the shopping cart and empty shopping cart
+
     Scenario: Successful Reset
         Given I am logged in
         And I add an item to the shopping cart
