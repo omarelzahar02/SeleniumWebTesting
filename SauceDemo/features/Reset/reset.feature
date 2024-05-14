@@ -1,13 +1,12 @@
-'
-User Story 1:  Successful Reset of App
-As a registered user, I want to be able to reset my shopping cart so that I can remove all items from it at once. 
+# User Story 1:  Successful Reset of App
+# As a registered user, I want to be able to reset my shopping cart so that I can remove all items from it at once.
 
-Acceptance Criteria:
-1. When I am logged in and I add an item to the shopping cart, a remove button should appear on that item.
-2. When I click on the more options button, a Reset button should be visible.
-3. When I click on the Reset button, no Remove buttons should be visible and there should be no number on the shopping cart.
-4. When I open the shopping cart, I should see no items.
-'
+# Acceptance Criteria:
+# 1. When I am logged in and I add an item to the shopping cart, a remove button should appear on that item.
+# 2. When I click on the more options button, a Reset button should be visible.
+# 3. When I click on the Reset button, no Remove buttons should be visible and there should be no number on the shopping cart.
+# 4. When I open the shopping cart, I should see no items.
+
 
 Feature: Reset
 

@@ -36,4 +36,4 @@ def step_when_user_clicks_logout(context):
 
 @then('I should be logged out')
 def step_then_user_logged_out(context):
-    assert 'https://saucedemo.com' == driver.current_url, "User is logged out"
+    assert 'https://www.saucedemo.com/' == driver.current_url, "User is logged out"
