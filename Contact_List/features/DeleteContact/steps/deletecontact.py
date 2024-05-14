@@ -27,10 +27,8 @@ def step_impl(context):
 
 @given('Contact list is not empty')
 def step_impl(context):
-    # add a contact
     global table_size
     table_size = len(WebDriverWait(driver, DELAY_TIME).until(EC.presence_of_element_located((By.ID, 'myTable'))).find_elements(By.TAG_NAME, 'tr')) - 1
-    # assert that the contact list is not empty
     assert len(WebDriverWait(driver, DELAY_TIME).until(EC.presence_of_element_located((By.ID, 'myTable'))).find_elements(By.TAG_NAME, 'tr')) - 1 > 0
 
 @given('I have a contact with the name "{first_name} {last_name}"')
