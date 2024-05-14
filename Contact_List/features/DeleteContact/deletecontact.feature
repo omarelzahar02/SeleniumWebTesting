@@ -1,3 +1,16 @@
+'
+User Story 1: Successful Delete of a Contact
+As a registered user, I want to be able to delete a contact so that I can manage my contact list effectively.
+
+Acceptance Criteria:
+1. When I am logged in and my contact list is not empty, I should be able to see a list of my contacts.
+2. When I click on a contact, I should be redirected to the contact details page.
+3. On the contact details page, a delete button should be visible.
+4. When I click on the delete button, a confirmation prompt should appear.
+5. When I click on the confirm button in the prompt, I should be redirected back to the contact list page.
+6. The deleted contact should no longer appear in my contact list.
+'
+
 Feature: Delete Contact
 
     Scenario Outline: Successfully delete a contact
