@@ -1,8 +1,9 @@
 Feature: Go to item page
 
-    As a user,
+    user story: As a user,
     I want to be able to navigate to the item page and verify that the information displayed is correct,
     So that I can make informed decisions about purchasing.
+    definition of done: User should be able to navigate to the item page and verify that the information displayed is correct.
 
     Scenario Outline: check whether user can go to item page and the info is correct
         Given User should login to swag labs using correct <username> and <password>

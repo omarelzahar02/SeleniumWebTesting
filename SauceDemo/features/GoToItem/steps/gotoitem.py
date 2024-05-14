@@ -33,15 +33,10 @@ def step_impl(context, item):
         item_children = i.find_elements(By.XPATH,"./child::*")
         item_image_div = item_children[0].find_elements(By.XPATH,".//*")
         item_image = item_image_div[1].get_attribute("src")
-        #print(item_image)
         item_name = item_children[1].find_element(By.CLASS_NAME,"inventory_item_name").text
-        #print(item_name)
         item_desc = item_children[1].find_element(By.CLASS_NAME,"inventory_item_desc").text
-        #print(item_desc)
         item_price = item_children[1].find_element(By.CLASS_NAME,"inventory_item_price").text
-        #print(item_price)
         item_info[item_name] = (item_image,item_name,item_desc,item_price)
-    print(item_info["Sauce Labs Backpack"])
 
     if item == "Sauce Labs Backpack":
         WebDriverWait(driver, DELAY_TIME).until(EC.presence_of_element_located((By.ID, "item_4_title_link"))).click()
@@ -89,6 +84,4 @@ def step_impl(context, item):
     item_desc = temp_div[4].text
     item_price = item_content.find_element(By.CLASS_NAME,"inventory_details_price").text
     new_info[item] = (item_image,item_name,item_desc,item_price)
-    print(new_info[item])
-    print(item_info[item])
     assert item_info[item] == new_info[item] , "Item info is not correct"

@@ -1,8 +1,9 @@
 Feature: add item to cart
 
-    # As a user,
-    # I want to be able to add items to my cart from the homepage,
-    # So that I can easily purchase them later.
+    user story: As a user,
+    I want to be able to add items to my cart from the homepage,
+    So that I can easily purchase them later.
+    definition of done: User should find the item in the cart after adding it
     
     Scenario Outline: Check whether user can add items to cart the homepage
         Given User should login to swag labs using correct <username> and <password>
