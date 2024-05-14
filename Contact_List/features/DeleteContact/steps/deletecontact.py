@@ -9,8 +9,8 @@ from constants import SITE_NAME, DELAY_TIME
 from my_imports import WebDriverWait, EC, By, thread
 from helper_functions import locate_element
 
-email = "ziad@ziad.com"
-password = "ziad123"
+email = "darwish@gmail.com"
+password = "123456789"
 driver = chrome()
 row = None
 table_size = None
@@ -92,6 +92,6 @@ def step_impl(context):
     # assert that the table size is less than the previous table size
     try:
         WebDriverWait(driver, DELAY_TIME).until(EC.presence_of_element_located((By.ID, 'myTable')))
-        assert False, "Table 'myTable' should not be present"
+        assert len(WebDriverWait(driver, DELAY_TIME).until(EC.presence_of_element_located((By.ID, 'myTable'))).find_elements(By.TAG_NAME, 'tr')) - 1 != table_size, "Table 'myTable' should not be present"
     except TimeoutException:
         pass

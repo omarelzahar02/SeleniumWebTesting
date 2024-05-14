@@ -26,5 +26,5 @@ Feature: Delete Contact
         And the contact should be deleted
 
         Examples:
-            | first | last | dob        | email              | phone        | addr1       | addr2  | city    | state | postal | country |
-            | John  | Doe  | 01/01/2000 | john.doe@email.com | 123-456-7890 | 123 Main St | Apt 4B | Anytown | NY    | 12345  | USA     |
+            | first    | last    | dob        | email              | phone        | addr1       | addr2  | city    | state | postal | country |
+            | Youssef  | Hassan  | 01/01/2000 | john.doe@email.com | 123-456-7890 | 123 Main St | Apt 4B | Anytown | NY    | 12345  | USA     |

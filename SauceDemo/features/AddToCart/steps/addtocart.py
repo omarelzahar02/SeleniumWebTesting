@@ -23,7 +23,7 @@ def step_impl(context, username, password):
     thread.sleep(SEE_TIME)
     WebDriverWait(driver, DELAY_TIME).until(EC.presence_of_element_located((By.ID, "react-burger-menu-btn"))).click()
     thread.sleep(SEE_TIME)
-    thread.sleep(1)
+    thread.sleep(3)
     WebDriverWait(driver, DELAY_TIME).until(EC.presence_of_element_located((By.ID, "reset_sidebar_link"))).click()
     driver.refresh()
     thread.sleep(SEE_TIME)
