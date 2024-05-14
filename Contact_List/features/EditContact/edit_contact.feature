@@ -1,13 +1,10 @@
 Feature: Edit Contact
-
-    # User Story 1: Successful Login for Accessing Edit Contact Feature
-    # As a registered user, User will be able to log in successfully to access the edit contact feature.
-    # Then User will be able to see all his contacts in his contacts list.
-    # User will choose the desired contact that he want to edit.
-    # All the contact details will be displayed in a seperate page.
-    # User will choose the feature which will be edit contact.
-    # So that User can update the details of existing contacts with valid contact details in his contact list.
-    # User will press save for the contact to be updated.
+    
+    # User Story: Edit Contact
+    # As a registered User,
+    # User want to be able to select a contact from his list,
+    # edit their details, and save the changes,
+    # so that User can keep his contacts up to date.
 
 
     Scenario Outline: User edits an existing contact
@@ -29,16 +26,11 @@ Feature: Edit Contact
         | Hussein   | Mostafa | Hussein      | Mostafa      | 2000-09-29    | jane.doe@example.com | 1234567890 | 123 New Street | Apt 4B | New City | New State | 12345 | New Country |
 
 
-    # User Story 2: Successful Login for Accessing Edit Contact Feature with Invalid Data
-    # As a registered user, User will be able to log in successfully to access the edit contact feature.
-    # Then User will be able to see all his contacts in his contacts list.
-    # User will choose the desired contact that he want to edit.
-    # All the contact details will be displayed in a seperate page.
-    # User will choose the feature which will be edit contact.
-    # So that User can update the details of existing contacts with invalid contact details in his contact list.
-    # User will press save for the contact to be updated.
-    # User will see the error message for the invalid data.
-    # error message for email validation and birthdate validation.
+    # User Story: Edit Contact with Invalid Data
+    # As a registered user,
+    # User edits his contact details with invalid data,
+    # User will see an error message,
+    # so that User can understand the data validation rules.
 
     Scenario Outline: User tries to edit a contact with invalid data
         Given the user is logged in
@@ -58,15 +50,12 @@ Feature: Edit Contact
         | Omar      | Elzahar | Jane      | Doe      | 20/9/5        | jane.doe@example.com | 1234567890 | 123 New Street | Apt 4B    | New City | New State | 12345      | New Country | Validation failed: birthdate: Birthdate is invalid |
         | Youssef   | Hassan  | Moaaz      | Tarek    | 2000-09-29    | jane.doeexample.com | 1234567890 | 123 New Street | Apt 4B | New City | New State | 12345 | New Country | Validation failed: email: Email is invalid |
 
-    # User Story 3: Successful Login for Accessing Edit Contact Feature with Cancel Button
-    # As a registered user, User will be able to log in successfully to access the edit contact feature.
-    # Then User will be able to see all his contacts in his contacts list.
-    # User will choose the desired contact that he want to edit.
-    # All the contact details will be displayed in a seperate page.
-    # User will choose the feature which will be edit contact.
-    # So that User can update the details of existing contacts with valid contact details in his contact list.
-    # User decides to cancel the editing of the contact, so he will press on cancel button.
-    # User will see the contact details without any changes.
+    # User Story: Edit Contact and Cancel
+    # As a registered User,
+    # User want to select a contact to edit,
+    # start editing their details,
+    # and then decide to cancel the editing,
+    # so that the original contact details remain unchanged.
 
 
     Scenario Outline: User cancels editing a contact
