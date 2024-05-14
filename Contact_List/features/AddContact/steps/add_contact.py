@@ -34,9 +34,6 @@ def step_impl(context):
     thread.sleep(DELAY_TIME)
 
 
-# @then(u'the user should see a form to add a new contact')
-# def step_impl(context):
-#     assert driver.title == "Add Contact", "Log in failed"
 
 @when(u'the user enters the following details to add a new contact')
 def step_impl(context):
@@ -101,14 +98,3 @@ def step_impl(context):
 def step_impl(context):
     assert len(WebDriverWait(driver, DELAY_TIME).until(EC.presence_of_element_located((By.ID, 'myTable'))).find_elements(By.TAG_NAME, 'tr')) - 1 == table_size, "Contact added to the table while it should not"
 
-
-
-# @then(u'the contact with first name Hussein and last name Mosatafa should appear in the contact list')
-# def step_impl(context):
-    
-#     raise NotImplementedError(u'STEP: Then the contact with first name Hussein and last name Mosatafa should appear in the contact list')
-
-
-# @then(u'the contact with first name Youssef and last name Hassan should appear in the contact list')
-# def step_impl(context):
-#     raise NotImplementedError(u'STEP: Then the contact with first name Youssef and last name Hassan should appear in the contact list')

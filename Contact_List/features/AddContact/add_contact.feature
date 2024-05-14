@@ -14,9 +14,10 @@ Feature: Add Contact
 
         Examples:
             | first   | last     | dob        | email               | phone      | addr1 | addr2 | city        | state          | postal | country |
+            | Omar    | Elzahar  | 2000-01-01 | omar@example.com    | 1864114868 | 17 St | 83 St | Cairo       | Tagamo3        | 10001  | Egypt   |
             | Abdullah| Ayman    | 1990-01-01 | abdullah@example.com| 1234567890 | 17 St | 83 St | Cairo       | Maadi          | 10001  | Egypt   |
             | Youssef | Hassan   | 1992-02-02 | darwish@example.com | 0987654321 | 5678  |       | Giza        | Haram          | 90001  | Egypt   |
-            | Ahmed   | Ali      |            |                     |            |       |       |             |                |        |         |
+            | Yehia   | fawzy    |            |                     |            |       |       |             |                |        |         |
     
     Scenario Outline: User adds a new contact with wrong date format
         Given the user is logged in
@@ -31,7 +32,7 @@ Feature: Add Contact
 
         Examples:
             | first   | last     | dob      | email               | phone      | addr1 | addr2 | city  | state | postal | country |
-            | Hussein | Mosatafa | 01-01-90 | hussein@example.com | 1234567890 | 17 St | 83 St | Cairo | Cairo | 10001  | Egypt   |
+            | Omar    | Elzahar | 01-01-90  | omar@example.com | 1234567890    | 17 St | 83 St | Cairo | Cairo | 10001  | Egypt   |
 
     Scenario Outline: User adds a new contact with wrong email format
         Given the user is logged in
@@ -46,7 +47,7 @@ Feature: Add Contact
 
         Examples:
             | first   | last     | dob        | email           | phone      | addr1 | addr2 | city  | state | postal | country |
-            | Hussein | Mosatafa | 1990-01-01 | husseingmail.com     | 1234567890 | 17 St | 83 St | Cairo | Cairo | 10001  | Egypt   |
+            | Omar    | Elzahar  | 1990-01-01 | omargmail.com     | 1234567890 | 17 St | 83 St | Cairo | Cairo | 10001  | Egypt   |
 
     Scenario Outline: User cancels adding a new contact
         Given the user is logged in
@@ -61,4 +62,4 @@ Feature: Add Contact
 
         Examples:
             | first   | last     | dob        | email               | phone      | addr1 | addr2 | city  | state | postal | country |
-            | Hussein | Mosatafa | 1990-01-01 | hussein@example.com | 1234567890 | 17 St | 83 St | Cairo | Cairo | 10001  | Egypt   |
+            | Omar    | Elzahar  | 1990-01-01 | omar@example.com | 1234567890 | 17 St | 83 St | Cairo | Cairo | 10001  | Egypt   |
