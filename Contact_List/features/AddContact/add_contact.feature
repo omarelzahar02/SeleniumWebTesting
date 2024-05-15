@@ -1,8 +1,9 @@
 Feature: Add Contact
 
-    # User Story: Add New Contact
-    # As a registered user,
-    # I want to add a new contact with their full details,
+    User Story: Add New Contact
+    As a registered user,
+    I want to add a new contact with their full details
+    definition of done: when new contact finally appears in the contact list
 
     Scenario Outline: User adds a new contact
         Given the user is logged in
@@ -23,10 +24,11 @@ Feature: Add Contact
             | Youssef | Hassan   | 1992-02-02 | darwish@example.com | 0987654321 | 5678  |       | Giza        | Haram          | 90001  | Egypt   |
             | Yehia   | fawzy    |            |                     |            |       |       |             |                |        |         |
     
-    # User Story: Add New Contact with Wrong Date Format
-    # As a registered user,
-    # I want to see an error message when I enter a birth date in the wrong format,
-    # so that I can understand the correct date format.
+    User Story: Add New Contact with Wrong Date Format
+    As a registered user,
+    I want to see an error message when I enter a birth date in the wrong format,
+    so that I can understand the correct date format.
+    definition of done: when the error message appears
 
     Scenario Outline: User adds a new contact with wrong date format
         Given the user is logged in
@@ -43,10 +45,11 @@ Feature: Add Contact
             | first   | last     | dob      | email               | phone      | addr1 | addr2 | city  | state | postal | country |
             | Omar    | Elzahar | 01-01-90  | omar@example.com | 1234567890    | 17 St | 83 St | Cairo | Cairo | 10001  | Egypt   |
     
-    # User Story: Add New Contact with Wrong Email Format
-    # As a registered user,
-    # I want to see an error message when I enter an email in the wrong format,
-    # so that I can understand the correct email format.
+    User Story: Add New Contact with Wrong Email Format
+    As a registered user,
+    I want to see an error message when I enter an email in the wrong format,
+    so that I can understand the correct email format.
+    definition of done: when the error message appears
 
     Scenario Outline: User adds a new contact with wrong email format
         Given the user is logged in
@@ -63,10 +66,11 @@ Feature: Add Contact
             | first   | last     | dob        | email           | phone      | addr1 | addr2 | city  | state | postal | country |
             | Omar    | Elzahar  | 1990-01-01 | omargmail.com     | 1234567890 | 17 St | 83 St | Cairo | Cairo | 10001  | Egypt   |
 
-    # User Story: Cancel Adding New Contact
-    # As a registered user,
-    # I want to cancel the action of adding a new contact after entering their details,
-    # so that no new contact is added to my contact list.
+    User Story: Cancel Adding New Contact
+    As a registered user,
+    I want to cancel the action of adding a new contact after entering their details,
+    so that no new contact is added to my contact list.
+    definition of done: when the new contact does not appear in the contact list
     
     Scenario Outline: User cancels adding a new contact
         Given the user is logged in
